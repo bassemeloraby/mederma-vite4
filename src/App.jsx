@@ -38,7 +38,8 @@ const router = createBrowserRouter([
         element: <SingleDrug />,
         // errorElement: <ErrorElement />,
         // loader: singleProductLoader(queryClient),
-      },{
+      },
+      {
         path: "cart",
         element: <Cart />,
       },

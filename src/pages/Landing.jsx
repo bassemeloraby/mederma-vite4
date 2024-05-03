@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { Fragment } from "react";
+import { Hero } from "../components";
 
 const Landing = () => {
   return (
-    <div>Landing</div>
-  )
-}
+    <Fragment>
+      {" "}
+      <Hero />
+    </Fragment>
+  );
+};
 
-export default Landing
+export default Landing;

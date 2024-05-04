@@ -18,6 +18,7 @@ import { ErrorElement } from "./components";
 
 // loaders
 import { loader as landingLoader } from "./pages/Landing";
+import { loader as singleDrugLoader } from "./pages/medicine/SingleDrug";
 
 
 const router = createBrowserRouter([
@@ -41,8 +42,8 @@ const router = createBrowserRouter([
       {
         path: "drugs/:id",
         element: <SingleDrug />,
-        // errorElement: <ErrorElement />,
-        // loader: singleProductLoader(queryClient),
+        errorElement: <ErrorElement />,
+        loader: singleDrugLoader,
       },
       {
         path: "cart",

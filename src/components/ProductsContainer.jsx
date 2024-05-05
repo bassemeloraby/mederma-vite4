@@ -7,7 +7,9 @@ import { useLoaderData } from 'react-router-dom';
 
 const ProductsContainer = () => {
   const { drugs } = useLoaderData();
-  const totalProducts = drugs.length
+  const wasfatyItems = drugs.filter((drug) => drug.wasfaty === true);
+
+  const totalProducts = wasfatyItems.length
   console.log(totalProducts)
   const [layout, setLayout] = useState("grid");
 
@@ -50,10 +52,10 @@ const ProductsContainer = () => {
             Sorry, no products matched your search...
           </h5>
         ) : layout === 'grid' ? (
-          <ProductsGrid /> 
+          <ProductsGrid Items={wasfatyItems}/> 
           // "Grid"
         ) : (
-          <ProductsList />
+          <ProductsList Items={wasfatyItems}/>
           // "List"
         )}
         </div>

@@ -2,12 +2,12 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import noPhoto from "../assets/noPhoto.jpg";
 
-const ProductsList = () => {
-  const { drugs } = useLoaderData();
+const ProductsList = ({Items}) => {
+  // const { drugs } = useLoaderData();
 
   return (
     <div className="mt-12 grid gap-y-8">
-      {drugs.map((drug) => {
+      {Items.map((drug) => {
         const { TradeName, PublicPrice, ScientificName } = drug;
         return (
           <Link

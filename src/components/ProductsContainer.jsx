@@ -50,11 +50,11 @@ const ProductsContainer = () => {
             Sorry, no products matched your search...
           </h5>
         ) : layout === 'grid' ? (
-          // <ProductsGrid /> 
-          "Grid"
+          <ProductsGrid /> 
+          // "Grid"
         ) : (
-          // <ProductsList />
-          "List"
+          <ProductsList />
+          // "List"
         )}
         </div>
     </Fragment>

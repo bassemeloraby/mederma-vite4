@@ -22,11 +22,13 @@ const Filters = () => {
         size="input-sm"
         listDB={scientificName}
       />
-
       {/* BUTTONS */}
-      <button type="submit" className="btn btn-primary btn-sm">
+      <button
+        type="submit"
+        className="btn btn-primary btn-sm"
+      >
         search
-      </button>
+      </button>{" "}
       <Link to="/drugs" className="btn btn-accent btn-sm">
         reset
       </Link>

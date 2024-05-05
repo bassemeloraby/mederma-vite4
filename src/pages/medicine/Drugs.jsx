@@ -15,7 +15,7 @@ export const loader = async ({ request }) => {
   // console.log(params);
   const response = await customFetch(url, { params });
   const drugs = response.data;
-  return { drugs };
+  return { drugs, params };
 };
 
 const Drugs = () => {

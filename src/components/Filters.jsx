@@ -7,9 +7,11 @@ import FormDtalistInput from "./form/FormDtalistInput";
 // import FormRange from "./form/FormRange";
 // import FormCheckbox from "./form/FormCheckbox";
 const Filters = () => {
-  const { drugs } = useLoaderData();
+  const { drugs, params } = useLoaderData();
   const [scientificName, setScientificName] = useState([]);
   // console.log(scientificName);
+  const { ScientificName ,wasfaty} = params;
+
   useEffect(() => {
     setScientificName([...new Set(drugs.map((drug) => drug.ScientificName))]);
   }, [drugs]);
@@ -21,12 +23,17 @@ const Filters = () => {
         type="text"
         size="input-sm"
         listDB={scientificName}
+        defaultValue={ScientificName}
       />
+       {/* wasfaty */}
+       <FormCheckbox
+       name="wasfaty"
+       label="wasfaty"
+       size="checkbox-sm"
+       defaultValue={wasfaty}
+     />
       {/* BUTTONS */}
-      <button
-        type="submit"
-        className="btn btn-primary btn-sm"
-      >
+      <button type="submit" className="btn btn-primary btn-sm">
         search
       </button>{" "}
       <Link to="/drugs" className="btn btn-accent btn-sm">

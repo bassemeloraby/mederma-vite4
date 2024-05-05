@@ -2,11 +2,12 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import noPhoto from "../assets/noPhoto.jpg";
 
-const ProductsGrid = () => {
-  const { drugs } = useLoaderData();
+const ProductsGrid = ({Items}) => {
+  // const { drugs } = useLoaderData();
+  // const wasfatyItems = drugs.filter((drug) => drug.wasfaty === true);
   return (
     <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {drugs.map((drug) => {
+      {Items.map((drug) => {
         const { TradeName, PublicPrice } = drug;
         return (
           <Link
@@ -22,9 +23,11 @@ const ProductsGrid = () => {
               />
             </figure>
             <div className="card-body items-center text-center">
-            <h2 className="card-title capitalize tracking-wider">{TradeName}</h2>
-            <span className="text-secondary">{PublicPrice}</span>
-          </div>
+              <h2 className="card-title capitalize tracking-wider">
+                {TradeName}
+              </h2>
+              <span className="text-secondary">{PublicPrice}</span>
+            </div>
           </Link>
         );
       })}

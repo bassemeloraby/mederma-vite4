@@ -9,7 +9,7 @@ import FormDtalistInput from "./form/FormDtalistInput";
 const Filters = () => {
   const { drugs } = useLoaderData();
   const [scientificName, setScientificName] = useState([]);
-  console.log(scientificName);
+  // console.log(scientificName);
   useEffect(() => {
     setScientificName([...new Set(drugs.map((drug) => drug.ScientificName))]);
   }, [drugs]);

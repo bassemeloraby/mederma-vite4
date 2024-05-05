@@ -6,12 +6,16 @@ import {
 } from "../../components";
 import { customFetch } from "../../utils";
 
-const url = "allDrugs";
+const url = "/allDrugs";
 
 export const loader = async ({ request }) => {
-  const response = await customFetch(url);
-  const drugs = response.data
-  return {drugs};
+  const params = Object.fromEntries([
+    ...new URL(request.url).searchParams.entries(),
+  ]);
+  // console.log(params);
+  const response = await customFetch(url, { params });
+  const drugs = response.data;
+  return { drugs };
 };
 
 const Drugs = () => {

@@ -55,12 +55,12 @@ const ItemWrapper = ({ children, ...props }) => (
   </div>
 );
 
-const ProductVitosoGrid = ({ items }) => {
+const ProductVitosoGrid = ({ contents }) => {
   return (
     <Fragment>
       <VirtuosoGrid
         style={{ height: 500 }}
-        data={items}
+        data={contents}
         totalCount={10500}
         components={gridComponents}
         itemContent={(index, drug) => {

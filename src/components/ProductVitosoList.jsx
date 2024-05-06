@@ -3,12 +3,12 @@ import { Virtuoso } from "react-virtuoso";
 import noPhoto from "../assets/noPhoto.jpg";
 import { Link } from "react-router-dom";
 
-const ProductVitosoList = ({ items }) => {
+const ProductVitosoList = ({ contents }) => {
   return (
     <div>
       <Virtuoso
         style={{ height: "600px", background: "#f8f8f8" }}
-        data={items}
+        data={contents}
         totalCount={10500}
         itemContent={(index, drug) => {
           const { TradeName, PublicPrice, ScientificName } = drug;

@@ -47,8 +47,9 @@ const Drugs = () => {
         contents={items}
         scientificName={scientificName}
         setScientificNameFilter={setScientificNameFilter}
+        scientificNameFilter={scientificNameFilter}
       />
-      <ProductsContainer />
+      <ProductsContainer contents={items}/>
       {/* <ComplexPaginationContainer/>
       <PaginationContainer />*/}
     </Fragment>

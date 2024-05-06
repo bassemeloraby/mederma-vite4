@@ -7,11 +7,12 @@ import { useLoaderData } from "react-router-dom";
 import ProductVitosoList from "./ProductVitosoList";
 import ProductVitosoGrid from "./ProductVitosoGrid";
 
-const ProductsContainer = () => {
-  const { drugs } = useLoaderData();
-  const wasfatyItems = drugs.filter((drug) => drug.wasfaty === true);
+const ProductsContainer = ({contents}) => {
 
-  const totalProducts = drugs.length;
+  // const { drugs } = useLoaderData();
+  // const wasfatyItems = drugs.filter((drug) => drug.wasfaty === true);
+
+  const totalProducts = contents.length;
   console.log(totalProducts);
   const [layout, setLayout] = useState("grid");
 
@@ -54,10 +55,10 @@ const ProductsContainer = () => {
             Sorry, no products matched your search...
           </h5>
         ) : layout === "grid" ? (
-          <ProductVitosoGrid items={drugs} />
+          <ProductVitosoGrid contents={contents} />
         ) : (
           // "Grid"
-          <ProductVitosoList items={drugs} />
+          <ProductVitosoList contents={contents} />
           // "List"
         )}
       </div>

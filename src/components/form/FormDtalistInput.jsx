@@ -1,6 +1,15 @@
 import React from "react";
 
-const FormDtalistInput = ({ label, name, type, size, listDB, onChange }) => {
+const FormDtalistInput = ({
+  label,
+  name,
+  type,
+  defaultValue,
+  size,
+  listDB,
+  onChange,
+}) => {
+  
   return (
     <div className="form-control">
       <label htmlFor={name} className="label">
@@ -9,10 +18,11 @@ const FormDtalistInput = ({ label, name, type, size, listDB, onChange }) => {
       <input
         type={type}
         name={name}
-        // defaultValue={defaultValue}
+        defaultValue={defaultValue}
         className={`input input-bordered ${size}`}
         list="data"
         onChange={onChange}
+        // autoComplete="off"
       />
       <datalist id="data">
         {listDB.map((c) => (

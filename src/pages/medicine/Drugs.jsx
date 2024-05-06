@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import {
   ComplexPaginationContainer,
   Filters,
@@ -6,23 +6,48 @@ import {
   ProductsContainer,
 } from "../../components";
 import { customFetch } from "../../utils";
+import { useLoaderData } from "react-router-dom";
 
 const url = "/allDrugs";
 
-export const loader = async ({ request }) => {
-  const params = Object.fromEntries([
-    ...new URL(request.url).searchParams.entries(),
-  ]);
-  // console.log(params);
-  const response = await customFetch(url, { params });
+export const loader = async () => {
+  const response = await customFetch(url);
   const drugs = response.data;
-  return { drugs, params };
+  return { drugs };
 };
 
 const Drugs = () => {
+  const { drugs } = useLoaderData();
+  // // const [scientificName, setScientificName] = useState([
+  //   ...new Set(drugs.map((drug) => drug.ScientificName)),
+  // ]);
+  const [items, setItems] = useState([]);
+  const [scientificNameFilter, setScientificNameFilter] = useState("");
+
+  // useEffect(() => {
+   const scientificName =([...new Set(drugs.map((drug) => drug.ScientificName))]);
+  // }, [drugs]);
+
+  useEffect(() => {
+    setItems(drugs);
+    if (scientificNameFilter) {
+      setItems(
+        drugs.filter((drug) => drug.ScientificName === scientificNameFilter)
+      );
+    }
+  }, [drugs, scientificNameFilter]);
+
+  console.log("Drugs page", drugs);
+  console.log("scientificNameFilter", scientificNameFilter);
+  console.log("items", items);
+
   return (
     <Fragment>
-      <Filters />
+      <Filters
+        contents={items}
+        scientificName={scientificName}
+        setScientificNameFilter={setScientificNameFilter}
+      />
       <ProductsContainer />
       {/* <ComplexPaginationContainer/>
       <PaginationContainer />*/}

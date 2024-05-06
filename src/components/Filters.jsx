@@ -6,40 +6,41 @@ import FormCheckbox from "./form/FormCheckbox";
 import FormDtalistInput from "./form/FormDtalistInput";
 // import FormRange from "./form/FormRange";
 // import FormCheckbox from "./form/FormCheckbox";
-const Filters = () => {
-  const { drugs, params } = useLoaderData();
-  const [scientificName, setScientificName] = useState([]);
+const Filters = ({ contents, scientificName, setScientificNameFilter }) => {
+  console.log("Filters", contents);
   // console.log(scientificName);
-  const { ScientificName ,wasfaty} = params;
+  // const { ScientificName ,wasfaty} = params;
 
-  useEffect(() => {
-    setScientificName([...new Set(drugs.map((drug) => drug.ScientificName))]);
-  }, [drugs]);
+const resetHandler =()=>{
+  setScientificNameFilter("")
+}
+
   return (
-    <Form className="bg-base-200 rounded-md px-8 py-4 grid gap-x-4  gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
+    <div className="bg-base-200 rounded-md px-8 py-4 grid gap-x-4  gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
       <FormDtalistInput
         name="ScientificName"
         label="select Scientific Name"
         type="text"
         size="input-sm"
         listDB={scientificName}
-        defaultValue={ScientificName}
+        // defaultValue={ScientificName}
+        onChange={(e) => setScientificNameFilter(e.target.value)}
       />
-       {/* wasfaty */}
-       <FormCheckbox
-       name="wasfaty"
-       label="wasfaty"
-       size="checkbox-sm"
-       defaultValue={wasfaty}
-     />
+      {/* wasfaty */}
+      <FormCheckbox
+        name="wasfaty"
+        label="wasfaty"
+        size="checkbox-sm"
+        //  defaultValue={wasfaty}
+      />
       {/* BUTTONS */}
       <button type="submit" className="btn btn-primary btn-sm">
         search
       </button>{" "}
-      <Link to="/drugs" className="btn btn-accent btn-sm">
+      <button onClick={resetHandler} className="btn btn-accent btn-sm">
         reset
-      </Link>
-    </Form>
+      </button>
+    </div>
   );
 };
 

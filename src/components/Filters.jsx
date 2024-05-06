@@ -16,9 +16,9 @@ const Filters = ({
   // console.log(scientificName);
   // const { ScientificName ,wasfaty} = params;
 
-  const resetHandler = () => {
-    setScientificNameFilter("");
-  };
+  // const resetHandler = () => {
+  //   setScientificNameFilter("");
+  // };
 
   return (
     <Form className="bg-base-200 rounded-md px-8 py-4 grid gap-x-4  gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
@@ -29,7 +29,8 @@ const Filters = ({
         size="input-sm"
         listDB={scientificName}
         defaultValue={scientificNameFilter}
-        onChange={(e) => setScientificNameFilter(e.target.value)}
+        // onChange={(e) => setScientificNameFilter(e.target.value)}
+        onInput={(e) => setScientificNameFilter(e.target.value)}
       />
       {/* wasfaty */}
       <FormCheckbox

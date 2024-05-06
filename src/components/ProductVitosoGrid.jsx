@@ -84,6 +84,7 @@ const ProductVitosoGrid = ({ contents }) => {
                 {TradeName}
               </h2>
               <span className="text-secondary">{PublicPrice}</span>
+              <span className="text-primary">{ScientificName}</span>
             </div>
           </Link>
             </ItemWrapper>

@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
 import { FeaturedProducts, Hero } from "../components";
 import { customFetch } from "../utils";
-const url = "/allDrugs?wasfaty=true";
+const url = "/allDrugs";
 
 export const loader = async () => {
   const response = await customFetch(url);
-  console.log(response.data)
   const drugs = response.data;
-  return { drugs };
+  const wasfaty = drugs.filter(drug=> drug.wasfaty === true)
+  return { wasfaty };
 };
 
 const Landing = () => {

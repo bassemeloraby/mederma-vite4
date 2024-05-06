@@ -8,6 +8,7 @@ const FormDtalistInput = ({
   size,
   listDB,
   onChange,
+  onInput
 }) => {
   
   return (
@@ -21,7 +22,8 @@ const FormDtalistInput = ({
         defaultValue={defaultValue}
         className={`input input-bordered ${size}`}
         list="data"
-        onChange={onChange}
+        // onChange={onChange}
+        onInput={onInput}
         // autoComplete="off"
       />
       <datalist id="data">

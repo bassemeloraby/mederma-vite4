@@ -9,7 +9,8 @@ export { default as ProductsContainer } from "./ProductsContainer";
 export { default as PaginationContainer } from "./PaginationContainer";
 export { default as Filters } from "./Filters";
 export { default as ComplexPaginationContainer } from "./ComplexPaginationContainer";
-export { default as ProductVitosoList } from "./ComplexPaginationContainer";
+export { default as ProductVitosoList } from "./ProductVitosoList";
+export { default as ProductVitosoGrid } from "./ProductVitosoGrid";
 //form
 export { default as FormInput } from "./form/FormInput";
 export { default as SubmitBtn } from "./form/SubmitBtn";

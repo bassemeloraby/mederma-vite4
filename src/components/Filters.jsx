@@ -11,8 +11,11 @@ const Filters = ({
   scientificName,
   setScientificNameFilter,
   scientificNameFilter,
+  setWasfatyFilter,
+  wasfatyFilter,
+  filterHandelr,
 }) => {
-  console.log("Filters", contents);
+  // console.log("Filters", contents);
   // console.log(scientificName);
   // const { ScientificName ,wasfaty} = params;
 
@@ -21,7 +24,7 @@ const Filters = ({
   // };
 
   return (
-    <Form className="bg-base-200 rounded-md px-8 py-4 grid gap-x-4  gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
+    <div className="bg-base-200 rounded-md px-8 py-4 grid gap-x-4  gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
       <FormDtalistInput
         name="ScientificName"
         label="select Scientific Name"
@@ -38,6 +41,7 @@ const Filters = ({
         label="wasfaty"
         size="checkbox-sm"
         //  defaultValue={wasfaty}
+        onChange={() => setWasfatyFilter(!wasfatyFilter)}
       />
       {/* BUTTONS <button type="submit" className="btn btn-primary btn-sm">
         search
@@ -45,7 +49,10 @@ const Filters = ({
       <button onClick={resetHandler} className="btn btn-accent btn-sm">
         reset
       </button>*/}
-    </Form>
+      <button onClick={filterHandelr} className="btn btn-accent btn-sm">
+        search
+      </button>
+    </div>
   );
 };
 

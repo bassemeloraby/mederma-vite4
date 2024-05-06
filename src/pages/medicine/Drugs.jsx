@@ -21,25 +21,37 @@ const Drugs = () => {
   // // const [scientificName, setScientificName] = useState([
   //   ...new Set(drugs.map((drug) => drug.ScientificName)),
   // ]);
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(drugs);
   const [scientificNameFilter, setScientificNameFilter] = useState("");
+  const [wasfatyFilter, setWasfatyFilter] = useState(false);
+  console.log(wasfatyFilter);
 
   // useEffect(() => {
-   const scientificName =([...new Set(drugs.map((drug) => drug.ScientificName))]);
+  const scientificName = [...new Set(drugs.map((drug) => drug.ScientificName))];
   // }, [drugs]);
 
-  useEffect(() => {
-    setItems(drugs);
+  const filterHandelr = () => {
+    let mainDrugs = drugs;
+
+    if (wasfatyFilter === true) {
+      mainDrugs = mainDrugs.filter((drug) => drug.wasfaty === true);
+    }
+
     if (scientificNameFilter) {
-      setItems(
-        drugs.filter((drug) => drug.ScientificName === scientificNameFilter)
+      mainDrugs = mainDrugs.filter(
+        (drug) => drug.ScientificName === scientificNameFilter
       );
     }
-  }, [drugs, scientificNameFilter]);
 
-  console.log("Drugs page", drugs);
-  console.log("scientificNameFilter", scientificNameFilter);
-  console.log("items", items);
+    // if (!scientificNameFilter || wasfatyFilter === false) {
+    //   setItems(mainDrugs);
+    // }
+    setItems(mainDrugs);
+  };
+
+  // console.log("Drugs page", drugs);
+  // console.log("scientificNameFilter", scientificNameFilter);
+  // console.log("items", items);
 
   return (
     <Fragment>
@@ -48,8 +60,12 @@ const Drugs = () => {
         scientificName={scientificName}
         setScientificNameFilter={setScientificNameFilter}
         scientificNameFilter={scientificNameFilter}
+        setWasfatyFilter={setWasfatyFilter}
+        wasfatyFilter={wasfatyFilter}
+        filterHandelr={filterHandelr}
+        setItems={setItems}
       />
-      <ProductsContainer contents={items}/>
+      <ProductsContainer contents={items} />
       {/* <ComplexPaginationContainer/>
       <PaginationContainer />*/}
     </Fragment>

@@ -1,5 +1,7 @@
 import React, { Fragment, forwardRef } from "react";
+import { Link } from "react-router-dom";
 import { VirtuosoGrid } from "react-virtuoso";
+import noPhoto from "../assets/noPhoto.jpg";
 
 const gridComponents = {
   List: forwardRef(({ style, children, ...props }, ref) => (
@@ -65,8 +67,25 @@ const ProductVitosoGrid = ({ items }) => {
           const { TradeName, PublicPrice, ScientificName } = drug;
           return (
             <ItemWrapper>
-              <h6>{TradeName}</h6>
-              <h6>{PublicPrice}</h6>
+            <Link
+            key={drug._id}
+            to={`/drugs/${drug._id}`}
+            className="card w-full shadow-xl hover:shadow-2xl transition duration-300"
+          >
+            <figure className="px-4 pt-4">
+              <img
+                src={noPhoto}
+                alt={TradeName}
+                className="rounded-xl h-64 md:h-48 w-full object-cover"
+              />
+            </figure>
+            <div className="card-body items-center text-center">
+              <h2 className="card-title capitalize tracking-wider">
+                {TradeName}
+              </h2>
+              <span className="text-secondary">{PublicPrice}</span>
+            </div>
+          </Link>
             </ItemWrapper>
           );
         }}

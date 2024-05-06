@@ -4,12 +4,13 @@ import ProductsList from './ProductsList'
 import { BsFillGridFill, BsList } from "react-icons/bs";
 
 import { useLoaderData } from 'react-router-dom';
+import ProductVitosoList from './ProductVitosoList';
 
 const ProductsContainer = () => {
   const { drugs } = useLoaderData();
   const wasfatyItems = drugs.filter((drug) => drug.wasfaty === true);
 
-  const totalProducts = wasfatyItems.length
+  const totalProducts = drugs.length
   console.log(totalProducts)
   const [layout, setLayout] = useState("grid");
 
@@ -55,7 +56,7 @@ const ProductsContainer = () => {
           <ProductsGrid Items={wasfatyItems}/> 
           // "Grid"
         ) : (
-          <ProductsList Items={wasfatyItems}/>
+          <ProductVitosoList items={wasfatyItems}/>
           // "List"
         )}
         </div>

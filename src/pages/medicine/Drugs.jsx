@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import {
+  ComplexPaginationContainer,
   Filters,
   PaginationContainer,
   ProductsContainer,
@@ -23,7 +24,8 @@ const Drugs = () => {
     <Fragment>
       <Filters />
       <ProductsContainer />
-      <PaginationContainer />
+      {/* <ComplexPaginationContainer/>
+      <PaginationContainer />*/}
     </Fragment>
   );
 };

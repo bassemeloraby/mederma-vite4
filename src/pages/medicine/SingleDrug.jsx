@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { customFetch } from "../../utils";
 import noPhoto from "../../assets/noPhoto.jpg";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../features/cart/cartSlice";
 
 export const loader = async ({ params }) => {
   const response = await customFetch(`/allDrugs/${params.id}`);
@@ -10,9 +12,17 @@ export const loader = async ({ params }) => {
 };
 const SingleDrug = () => {
   const drug = useLoaderData();
-  console.log(drug.drug);
-  const { TradeName, PublicPrice, ScientificName, MarketingCompany } = drug.drug[0];
-  console.log(TradeName)
+  // console.log(drug.drug);
+  const { TradeName, PublicPrice, ScientificName, MarketingCompany } =
+    drug.drug[0];
+  // console.log(TradeName)
+
+  const dispatch = useDispatch();
+
+  const addToCart = () => {
+    dispatch(addItem({ drug }));
+  };
+
   return (
     <section>
       <div className="text-md breadcrumbs">
@@ -45,6 +55,12 @@ const SingleDrug = () => {
           <h4 className="text-xl text-neutral-content font-bold mt-2">
             {MarketingCompany}
           </h4>
+        </div>
+        {/* CART BTN */}
+        <div className="mt-10">
+          <button className="btn btn-secondary btn-md" onClick={addToCart}>
+            Add to bag
+          </button>
         </div>
       </div>{" "}
     </section>

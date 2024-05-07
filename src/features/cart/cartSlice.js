@@ -1,36 +1,33 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const defaultState = {
   cartItems: [],
 };
 const getCartFromLocalStorage = () => {
-  return JSON.parse(localStorage.getItem('cart')) || defaultState;
+  return JSON.parse(localStorage.getItem("cart")) || defaultState;
 };
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState: getCartFromLocalStorage(),
   reducers: {
     addItem: (state, action) => {
-      const { product } = action.payload;
-      const item = state.cartItems.find((i) => i.cartID === product.cartID);
-      if (item) {
-        item.amount += product.amount;
-      } else {
-        state.cartItems.push(product);
-      }
-      toast.success('Item added to cart');
+      const { drug } = action.payload;
+
+      state.cartItems.push(drug);
+
+      toast.success("Item added to cart");
     },
     clearCart: (state) => {
-      localStorage.setItem('cart', JSON.stringify(defaultState));
+      localStorage.setItem("cart", JSON.stringify(defaultState));
       return defaultState;
     },
     removeItem: (state, action) => {
       const { cartID } = action.payload;
       const product = state.cartItems.find((i) => i.cartID === cartID);
       state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
-      toast.error('Item removed from cart');
+      toast.error("Item removed from cart");
     },
     // editItem: (state, action) => {
     //   const { cartID } = action.payload;

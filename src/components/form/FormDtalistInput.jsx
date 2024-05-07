@@ -7,7 +7,6 @@ const FormDtalistInput = ({
   defaultValue,
   size,
   listDB,
-  onChange,
   onInput
 }) => {
   

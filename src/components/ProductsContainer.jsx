@@ -1,17 +1,12 @@
 import React, { Fragment, useState } from "react";
-import ProductsGrid from "./ProductsGrid";
-import ProductsList from "./ProductsList";
 import { BsFillGridFill, BsList } from "react-icons/bs";
 
-import { useLoaderData } from "react-router-dom";
 import ProductVitosoList from "./ProductVitosoList";
 import ProductVitosoGrid from "./ProductVitosoGrid";
 
 const ProductsContainer = ({contents}) => {
 
-  // const { drugs } = useLoaderData();
-  // const wasfatyItems = drugs.filter((drug) => drug.wasfaty === true);
-
+  
   const totalProducts = contents.length;
   console.log(totalProducts);
   const [layout, setLayout] = useState("grid");

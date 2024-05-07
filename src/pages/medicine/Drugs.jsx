@@ -1,8 +1,6 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import {
-  ComplexPaginationContainer,
   Filters,
-  PaginationContainer,
   ProductsContainer,
 } from "../../components";
 import { customFetch } from "../../utils";
@@ -18,17 +16,12 @@ export const loader = async () => {
 
 const Drugs = () => {
   const { drugs } = useLoaderData();
-  // // const [scientificName, setScientificName] = useState([
-  //   ...new Set(drugs.map((drug) => drug.ScientificName)),
-  // ]);
+  
   const [items, setItems] = useState(drugs);
   const [scientificNameFilter, setScientificNameFilter] = useState("");
   const [wasfatyFilter, setWasfatyFilter] = useState(false);
-  console.log(wasfatyFilter);
 
-  // useEffect(() => {
   const scientificName = [...new Set(drugs.map((drug) => drug.ScientificName))];
-  // }, [drugs]);
 
   const filterHandelr = () => {
     let mainDrugs = drugs;
@@ -42,16 +35,10 @@ const Drugs = () => {
         (drug) => drug.ScientificName === scientificNameFilter
       );
     }
-
-    // if (!scientificNameFilter || wasfatyFilter === false) {
-    //   setItems(mainDrugs);
-    // }
     setItems(mainDrugs);
   };
 
-  // console.log("Drugs page", drugs);
-  // console.log("scientificNameFilter", scientificNameFilter);
-  // console.log("items", items);
+  
 
   return (
     <Fragment>
@@ -66,8 +53,7 @@ const Drugs = () => {
         setItems={setItems}
       />
       <ProductsContainer contents={items} />
-      {/* <ComplexPaginationContainer/>
-      <PaginationContainer />*/}
+      
     </Fragment>
   );
 };

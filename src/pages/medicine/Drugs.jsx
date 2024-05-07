@@ -1,8 +1,5 @@
 import React, { Fragment, useState } from "react";
-import {
-  Filters,
-  ProductsContainer,
-} from "../../components";
+import { Filters, ProductsContainer } from "../../components";
 import { customFetch } from "../../utils";
 import { useLoaderData } from "react-router-dom";
 
@@ -16,12 +13,14 @@ export const loader = async () => {
 
 const Drugs = () => {
   const { drugs } = useLoaderData();
-  
+
   const [items, setItems] = useState(drugs);
   const [scientificNameFilter, setScientificNameFilter] = useState("");
+  const [marketingCompanyFilter, setMarketingCompanyFilter] = useState("");
   const [wasfatyFilter, setWasfatyFilter] = useState(false);
 
   const scientificName = [...new Set(drugs.map((drug) => drug.ScientificName))];
+  const marketingCompany = [...new Set(drugs.map((drug) => drug.MarketingCompany))];
 
   const filterHandelr = () => {
     let mainDrugs = drugs;
@@ -35,10 +34,13 @@ const Drugs = () => {
         (drug) => drug.ScientificName === scientificNameFilter
       );
     }
+    if (marketingCompanyFilter) {
+      mainDrugs = mainDrugs.filter(
+        (drug) => drug.MarketingCompany === marketingCompanyFilter
+      );
+    }
     setItems(mainDrugs);
   };
-
-  
 
   return (
     <Fragment>
@@ -51,9 +53,12 @@ const Drugs = () => {
         wasfatyFilter={wasfatyFilter}
         filterHandelr={filterHandelr}
         setItems={setItems}
+        // MarketingCompany
+        marketingCompany={marketingCompany}
+        setMarketingCompanyFilter={setMarketingCompanyFilter}
+        marketingCompanyFilter={marketingCompanyFilter}
       />
       <ProductsContainer contents={items} />
-      
     </Fragment>
   );
 };

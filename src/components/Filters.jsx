@@ -5,16 +5,32 @@ import FormDtalistInput from "./form/FormDtalistInput";
 
 const Filters = ({
   contents,
+  // scientificName
   scientificName,
   setScientificNameFilter,
   scientificNameFilter,
+  // wasfaty
   setWasfatyFilter,
   wasfatyFilter,
+  // MarketingCompany
+  marketingCompany,
+  setMarketingCompanyFilter,
+  marketingCompanyFilter,
+  // functions
   filterHandelr,
 }) => {
-  
   return (
     <div className="bg-base-200 rounded-md px-8 py-4 grid gap-x-4  gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
+      {/* company  */}
+      <FormDtalistInput
+        name="MarketingCompany"
+        label="select Marketing Company"
+        type="text"
+        size="input-sm"
+        listDB={marketingCompany}
+        defaultValue={marketingCompanyFilter}
+        onInput={(e) => setMarketingCompanyFilter(e.target.value)}
+      />
       {/* ScientificName  */}
       <FormDtalistInput
         name="ScientificName"

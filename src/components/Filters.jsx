@@ -30,6 +30,7 @@ const Filters = ({
         listDB={marketingCompany}
         defaultValue={marketingCompanyFilter}
         onInput={(e) => setMarketingCompanyFilter(e.target.value)}
+        list="MarketingCompany"
       />
       {/* ScientificName  */}
       <FormDtalistInput
@@ -40,6 +41,7 @@ const Filters = ({
         listDB={scientificName}
         defaultValue={scientificNameFilter}
         onInput={(e) => setScientificNameFilter(e.target.value)}
+        list="ScientificName"
       />
       {/* wasfaty */}
       <FormCheckbox

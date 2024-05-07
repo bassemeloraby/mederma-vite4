@@ -7,7 +7,8 @@ const FormDtalistInput = ({
   defaultValue,
   size,
   listDB,
-  onInput
+  onInput,
+  list
 }) => {
   
   return (
@@ -20,12 +21,10 @@ const FormDtalistInput = ({
         name={name}
         defaultValue={defaultValue}
         className={`input input-bordered ${size}`}
-        list="data"
-        // onChange={onChange}
+        list={list}
         onInput={onInput}
-        // autoComplete="off"
       />
-      <datalist id="data">
+      <datalist id={list}>
         {listDB.map((c) => (
           <option key={c} value={c}>
             {c}

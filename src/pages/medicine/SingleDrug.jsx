@@ -20,7 +20,8 @@ const SingleDrug = () => {
   const dispatch = useDispatch();
 
   const cartProduct = {
-    productID: _id,
+    cartID: _id + Math.random(),
+    productID: _id ,
     TradeName,
     ScientificName,
     MarketingCompany,

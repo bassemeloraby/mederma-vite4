@@ -6,8 +6,8 @@ const CartItemsList = () => {
   const cartItems = useSelector((state) => state.cartState.cartItems);
   return (
     <Fragment>
-      {cartItems.map((item, i) => {
-        return <CartItem key={i} cartItem={item} />;
+      {cartItems.map((item) => {
+        return <CartItem key={item} cartItem={item} />;
       })}
     </Fragment>
   );

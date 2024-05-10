@@ -25,7 +25,7 @@ const cartSlice = createSlice({
     },
     removeItem: (state, action) => {
       const { cartID } = action.payload;
-      const product = state.cartItems.find((i) => i.cartID === cartID);
+      // const product = state.cartItems.find((i) => i.cartID === cartID);
       state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
       toast.error("Item removed from cart");
     },

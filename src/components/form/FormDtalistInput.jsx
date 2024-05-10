@@ -8,9 +8,8 @@ const FormDtalistInput = ({
   size,
   listDB,
   onInput,
-  list
+  list,
 }) => {
-  
   return (
     <div className="form-control">
       <label htmlFor={name} className="label">
@@ -25,8 +24,8 @@ const FormDtalistInput = ({
         onInput={onInput}
       />
       <datalist id={list}>
-        {listDB.map((c) => (
-          <option key={c} value={c}>
+        {listDB.map((c, i) => (
+          <option key={i} value={c}>
             {c}
           </option>
         ))}

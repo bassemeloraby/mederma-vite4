@@ -9,6 +9,7 @@ export { default as ProductsContainer } from "./ProductsContainer";
 export { default as Filters } from "./Filters";
 export { default as ProductVitosoList } from "./ProductVitosoList";
 export { default as ProductVitosoGrid } from "./ProductVitosoGrid";
+export { default as CartItemsList } from "./CartItemsList";
 //form
 export { default as FormInput } from "./form/FormInput";
 export { default as SubmitBtn } from "./form/SubmitBtn";

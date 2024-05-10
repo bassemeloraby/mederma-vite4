@@ -13,14 +13,21 @@ export const loader = async ({ params }) => {
 const SingleDrug = () => {
   const drug = useLoaderData();
   // console.log(drug.drug);
-  const { TradeName, PublicPrice, ScientificName, MarketingCompany } =
+  const { _id, TradeName, PublicPrice, ScientificName, MarketingCompany } =
     drug.drug[0];
   // console.log(TradeName)
 
   const dispatch = useDispatch();
 
+  const cartProduct = {
+    productID: _id,
+    TradeName,
+    ScientificName,
+    MarketingCompany,
+  };
+
   const addToCart = () => {
-    dispatch(addItem({ drug }));
+    dispatch(addItem({ drug: cartProduct }));
   };
 
   return (

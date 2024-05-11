@@ -9,7 +9,7 @@ const ProductsContainer = ({contents}) => {
   
   const totalProducts = contents.length;
   console.log(totalProducts);
-  const [layout, setLayout] = useState("grid");
+  const [layout, setLayout] = useState("list");
 
   const setActiveStyles = (pattern) => {
     return `text-xl btn btn-circle btn-sm ${

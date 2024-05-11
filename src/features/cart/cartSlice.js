@@ -21,6 +21,9 @@ const cartSlice = createSlice({
     },
     clearCart: (state) => {
       localStorage.setItem("cart", JSON.stringify(defaultState));
+      // // localStorage.removeItem("cart");
+      // // state.cartItems = defaultState
+      // console.log("clearCart ya weld",action.payload);
       return defaultState;
     },
     removeItem: (state, action) => {
@@ -29,16 +32,6 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
       toast.error("Item removed from cart");
     },
-    // editItem: (state, action) => {
-    //   const { cartID } = action.payload;
-    //   const item = state.cartItems.find((i) => i.cartID === cartID);
-    //   toast.success('Cart updated');
-    // },
-    // calculateTotals: (state) => {
-    //   state.tax = 0.1 * state.cartTotal;
-    //   state.orderTotal = state.cartTotal + state.shipping + state.tax;
-    //   localStorage.setItem('cart', JSON.stringify(state));
-    // },
   },
 });
 

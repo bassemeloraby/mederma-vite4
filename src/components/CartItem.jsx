@@ -1,7 +1,6 @@
 import { removeItem } from "../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import noPhoto from "../assets/noPhoto.jpg";
-import { useEffect } from "react";
 
 const CartItem = ({ cartItem }) => {
   const dispatch = useDispatch();
@@ -14,12 +13,6 @@ const CartItem = ({ cartItem }) => {
 
   const { productID, TradeName, PublicPrice, ScientificName, MarketingCompany } =
     cartItem;
-
-// useEffect(()=>{
-
-
-// },[dispatch])
-
 
   return (
     <article

@@ -10,25 +10,27 @@ const url = "/specialArrays";
 const CartItemsList = () => {
   const cartItems = useSelector((state) => state.cartState.cartItems);
   const [items, setItems] = useState(cartItems);
+  console.log(cartItems);
   const [listName, setListName] = useState("");
   const dispatch = useDispatch();
-
 
   const saveSpecialAr = async () => {
     console.log(listName);
     const specialArraysData = { Description: listName, content: cartItems };
     const response = await customFetch.post(url, specialArraysData);
     const mainRes = response.data;
-    toast.success("list is saved successfully")
+    toast.success("list is saved successfully");
     console.log(mainRes);
   };
 
-  const clearHandler =()=>{
-    dispatch(clearCart())
-    setItems([])
-  }
+  const clearHandler = () => {
+    dispatch(clearCart());
+    setItems([]);
+  };
 
-
+  useEffect(() => {
+    setItems(cartItems);
+  }, [cartItems]);
   return (
     <Fragment>
       {items.map((item, i) => {
@@ -42,7 +44,10 @@ const CartItemsList = () => {
             size="input-sm mb-8"
             onChange={(e) => setListName(e.target.value)}
           />
-          <button onClick={saveSpecialAr} className="btn btn-accent btn-sm me-2">
+          <button
+            onClick={saveSpecialAr}
+            className="btn btn-accent btn-sm me-2"
+          >
             save
           </button>
           <button onClick={clearHandler} className="btn btn-primary btn-sm">

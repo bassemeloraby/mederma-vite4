@@ -2,26 +2,14 @@ import React from "react";
 import { Virtuoso } from "react-virtuoso";
 import noPhoto from "../assets/noPhoto.jpg";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addItem } from "../features/cart/cartSlice";
 
 const ProductVitosoList = ({ contents }) => {
-  const dispatch = useDispatch();
 
   const { _id, TradeName, PublicPrice, ScientificName, MarketingCompany } =
     contents;
 
-  const cartProduct = {
-    cartID: _id + Math.random(),
-    productID: _id,
-    TradeName,
-    ScientificName,
-    MarketingCompany,
-  };
+  
 
-  const addToCart = () => {
-    dispatch(addItem({ drug: cartProduct }));
-  };
 
   return (
     <div>
@@ -54,14 +42,6 @@ const ProductVitosoList = ({ contents }) => {
               <p className="font-medium ml-0 sm:ml-auto text-lg">
                 {PublicPrice}
               </p>
-              <div className="mt-10">
-                <button
-                  className="btn btn-secondary btn-md"
-                  onClick={addToCart}
-                >
-                  Add to bag
-                </button>
-              </div>
             </div>
           );
         }}

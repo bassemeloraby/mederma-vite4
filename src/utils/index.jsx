@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const productionUrl = 'https://rich-blue-llama-vest.cyclic.cloud/api';
+const productionUrl = 'https://famous-newt-sweatshirt.cyclic.app/api';
 
 export const customFetch = axios.create({
   baseURL: productionUrl,

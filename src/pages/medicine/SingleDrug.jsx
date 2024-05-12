@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { customFetch } from "../../utils";
 import noPhoto from "../../assets/noPhoto.jpg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../features/cart/cartSlice";
 
 export const loader = async ({ params }) => {
@@ -11,12 +11,14 @@ export const loader = async ({ params }) => {
   return { drug: response.data };
 };
 const SingleDrug = () => {
+
   const drug = useLoaderData();
-  // console.log(drug.drug);
+  const cartItems = useSelector((state) => state.cartState.cartItems);
+
+  // console.log(cartItems[0].productID);
+  console.log(cartItems.length);
   const { _id, TradeName, PublicPrice, ScientificName, MarketingCompany } =
     drug.drug[0];
-  // console.log(TradeName)
-
   const dispatch = useDispatch();
 
   const cartProduct = {
@@ -28,6 +30,7 @@ const SingleDrug = () => {
   };
 
   const addToCart = () => {
+
     dispatch(addItem({ drug: cartProduct }));
   };
 

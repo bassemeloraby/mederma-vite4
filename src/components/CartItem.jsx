@@ -1,8 +1,7 @@
-// import { formatPrice, generateAmountOptions } from '../utils';
 import { removeItem } from "../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import noPhoto from "../assets/noPhoto.jpg";
-
+import { useEffect } from "react";
 
 const CartItem = ({ cartItem }) => {
   const dispatch = useDispatch();
@@ -10,11 +9,16 @@ const CartItem = ({ cartItem }) => {
   const removeItemFromTheCart = () => {
     dispatch(removeItem({ cartID }));
   };
-  //   const handleAmount = (e) => {
-  //     dispatch(editItem({ cartID, amount: parseInt(e.target.value) }));
-  //   };
+  
 
-  const { cartID, TradeName, PublicPrice, ScientificName, MarketingCompany } = cartItem;
+  const { cartID, TradeName, PublicPrice, ScientificName, MarketingCompany } =
+    cartItem;
+
+// useEffect(()=>{
+
+
+// },[dispatch])
+
 
   return (
     <article
@@ -38,25 +42,10 @@ const CartItem = ({ cartItem }) => {
         <h4 className="mt-2 capitalize text-sm text-neutral-content">
           {ScientificName}
         </h4>
-    
       </div>
       <div className="sm:ml-12">
         {/* AMOUNT */}
-        <div className="form-control max-w-xs">
-          {/* <label htmlFor='amount' className='label p-0'>
-            <span className='label-text'>Amount</span>
-          </label>
-         <select
-            name='amount'
-            id='amount'
-            className='mt-2 select select-base select-bordered select-xs'
-            value={amount}
-            onChange={handleAmount}
-          >
-            {generateAmountOptions(amount + 5)}
-          </select>
-         */}
-        </div>
+        <div className="form-control max-w-xs"></div>
         {/* REMOVE */}
         <button
           className="mt-2 link link-primary link-hover text-sm"

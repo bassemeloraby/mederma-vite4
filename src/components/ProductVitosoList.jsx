@@ -2,14 +2,30 @@ import React from "react";
 import { Virtuoso } from "react-virtuoso";
 import noPhoto from "../assets/noPhoto.jpg";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addItem } from "../features/cart/cartSlice";
 
 const ProductVitosoList = ({ contents }) => {
+  // const { _id, TradeName, PublicPrice, ScientificName, MarketingCompany } =
+  //   contents;
+  const dispatch = useDispatch();
 
-  const { _id, TradeName, PublicPrice, ScientificName, MarketingCompany } =
-    contents;
+  const addHnadler = (_id) => {
+    console.log(_id);
+    const drugToAdd = contents.filter((drug) => drug._id === _id);
+    console.log(drugToAdd[0]);
+    const cartProduct = {
+      // cartID: _id + Math.random(),
+      productID: drugToAdd[0]._id,
+      TradeName: drugToAdd[0].TradeName,
+      ScientificName: drugToAdd[0].ScientificName,
+      MarketingCompany: drugToAdd[0].MarketingCompany,
+    };
+    console.log(cartProduct);
+    dispatch(addItem({ drug: cartProduct }));
+  };
 
   
-
 
   return (
     <div>
@@ -18,10 +34,10 @@ const ProductVitosoList = ({ contents }) => {
         data={contents}
         totalCount={10500}
         itemContent={(index, drug) => {
-          const { TradeName, PublicPrice, ScientificName } = drug;
+          const { _id, TradeName, PublicPrice, ScientificName } = drug;
           return (
             <div
-              key={drug._id}
+              key={_id}
               className="p-8 rounded-lg flex flex-col sm:flex-row gap-y-4 flex-wrap  bg-base-100 shadow-xl hover:shadow-2xl duration-300 group"
             >
               <img
@@ -30,7 +46,7 @@ const ProductVitosoList = ({ contents }) => {
                 className="h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover group-hover:scale-105 transition duration-300"
               />
               <div className="ml-0 sm:ml-16">
-                <Link to={`/drugs/${drug._id}`}>
+                <Link to={`/drugs/${_id}`}>
                   <h3 className="capitalize font-medium text-lg">
                     {TradeName}
                   </h3>
@@ -42,6 +58,14 @@ const ProductVitosoList = ({ contents }) => {
               <p className="font-medium ml-0 sm:ml-auto text-lg">
                 {PublicPrice}
               </p>
+              <div className="mt-10">
+                <button
+                  className="btn btn-secondary btn-md"
+                  onClick={() => addHnadler(_id)}
+                >
+                  Add to bag
+                </button>
+              </div>
             </div>
           );
         }}

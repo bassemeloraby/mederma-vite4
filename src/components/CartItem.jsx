@@ -7,11 +7,12 @@ const CartItem = ({ cartItem }) => {
   const dispatch = useDispatch();
 
   const removeItemFromTheCart = () => {
-    dispatch(removeItem({ cartID }));
+    dispatch(removeItem({ productID }));
+    console.log(productID)
   };
   
 
-  const { cartID, TradeName, PublicPrice, ScientificName, MarketingCompany } =
+  const { productID, TradeName, PublicPrice, ScientificName, MarketingCompany } =
     cartItem;
 
 // useEffect(()=>{
@@ -22,7 +23,7 @@ const CartItem = ({ cartItem }) => {
 
   return (
     <article
-      key={cartID}
+      key={productID}
       className="mb-12 flex flex-col gap-y-4 sm:flex-row flex-wrap border-b border-base-300 pb-6 last:border-b-0"
     >
       {/* IMAGE */}

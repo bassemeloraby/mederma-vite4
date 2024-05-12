@@ -14,10 +14,16 @@ const cartSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
       const { drug } = action.payload;
+      const product = state.cartItems.find(
+        (i) => i.productID === drug.productID
+      );
+      if (product) {
+        toast.warning("Item is already added to cart");
+      } else {
+        state.cartItems.push(drug);
 
-      state.cartItems.push(drug);
-
-      toast.success("Item added to cart");
+        toast.success("Item added to cart");
+      }
     },
     clearCart: (state) => {
       localStorage.setItem("cart", JSON.stringify(defaultState));
@@ -27,10 +33,12 @@ const cartSlice = createSlice({
       return defaultState;
     },
     removeItem: (state, action) => {
-      const { cartID } = action.payload;
+      const { productID } = action.payload;
       // const product = state.cartItems.find((i) => i.cartID === cartID);
-      state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
-      toast.error("Item removed from cart");
+      state.cartItems = state.cartItems.filter(
+        (i) => i.productID !== productID
+      );
+      toast.success("Item removed from cart");
     },
   },
 });

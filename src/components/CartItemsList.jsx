@@ -16,11 +16,15 @@ const CartItemsList = () => {
 
   const saveSpecialAr = async () => {
     console.log(listName);
+    if(!listName){
+      toast.error("please provide a list name");
+    }
     const specialArraysData = { Description: listName, content: cartItems };
     const response = await customFetch.post(url, specialArraysData);
     const mainRes = response.data;
     toast.success("list is saved successfully");
     console.log(mainRes);
+    console.log(response);
   };
 
   const clearHandler = () => {

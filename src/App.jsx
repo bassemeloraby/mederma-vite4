@@ -20,6 +20,7 @@ import { ErrorElement } from "./components";
 import { loader as landingLoader } from "./pages/Landing";
 import { loader as singleDrugLoader } from "./pages/medicine/SingleDrug";
 import { loader as drugsLoader } from "./pages/medicine/Drugs";
+import { loader as checkoutLoader } from "./pages/medicine/Checkout";
 
 
 const router = createBrowserRouter([
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
       {
         path: "checkout",
         element: <Checkout />,
-        // loader: checkoutLoader(store),
+        loader: checkoutLoader,
         // action: checkoutAction(store, queryClient),
       },
       {

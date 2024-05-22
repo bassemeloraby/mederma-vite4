@@ -3,27 +3,28 @@ import { Filters, ProductsContainer } from "../../components";
 import { customFetch } from "../../utils";
 import { useLoaderData } from "react-router-dom";
 
-const url = "/allDrugs";
+const url = "/allProducts";
 
 export const loader = async () => {
   const response = await customFetch(url);
-  const drugs = response.data;
-  return { drugs };
+  const products = response.data;
+  console.log(products)
+  return { products };
 };
 
 const Drugs = () => {
-  const { drugs } = useLoaderData();
+  const { products } = useLoaderData();
 
-  const [items, setItems] = useState(drugs);
+  const [items, setItems] = useState(products);
   const [scientificNameFilter, setScientificNameFilter] = useState("");
   const [marketingCompanyFilter, setMarketingCompanyFilter] = useState("");
   const [wasfatyFilter, setWasfatyFilter] = useState(false);
 
-  const scientificName = [...new Set(drugs.map((drug) => drug.ScientificName))];
-  const marketingCompany = [...new Set(drugs.map((drug) => drug.MarketingCompany))];
+  const scientificName = [...new Set(products.map((drug) => drug.scientificName))];
+  const marketingCompany = [...new Set(products.map((drug) => drug.marketingCompany))];
 
   const filterHandelr = () => {
-    let mainDrugs = drugs;
+    let mainDrugs = products;
 
     if (wasfatyFilter === true) {
       mainDrugs = mainDrugs.filter((drug) => drug.wasfaty === true);
@@ -31,12 +32,12 @@ const Drugs = () => {
 
     if (scientificNameFilter) {
       mainDrugs = mainDrugs.filter(
-        (drug) => drug.ScientificName === scientificNameFilter
+        (drug) => drug.scientificName === scientificNameFilter
       );
     }
     if (marketingCompanyFilter) {
       mainDrugs = mainDrugs.filter(
-        (drug) => drug.MarketingCompany === marketingCompanyFilter
+        (drug) => drug.marketingCompany === marketingCompanyFilter
       );
     }
     setItems(mainDrugs);

@@ -6,8 +6,7 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../features/cart/cartSlice";
 
 const ProductVitosoList = ({ contents }) => {
-  // const { _id, TradeName, PublicPrice, ScientificName, MarketingCompany } =
-  //   contents;
+  
   const dispatch = useDispatch();
 
   const addHnadler = (_id) => {
@@ -17,9 +16,9 @@ const ProductVitosoList = ({ contents }) => {
     const cartProduct = {
       // cartID: _id + Math.random(),
       productID: drugToAdd[0]._id,
-      TradeName: drugToAdd[0].TradeName,
-      ScientificName: drugToAdd[0].ScientificName,
-      MarketingCompany: drugToAdd[0].MarketingCompany,
+      description: drugToAdd[0].description,
+      scientificName: drugToAdd[0].scientificName,
+      marketingCompany: drugToAdd[0].marketingCompany,
     };
     console.log(cartProduct);
     dispatch(addItem({ drug: cartProduct }));
@@ -34,7 +33,7 @@ const ProductVitosoList = ({ contents }) => {
         data={contents}
         totalCount={10500}
         itemContent={(index, drug) => {
-          const { _id, TradeName, PublicPrice, ScientificName } = drug;
+          const { _id, description, publicPrice, scientificName } = drug;
           return (
             <div
               key={_id}
@@ -42,21 +41,21 @@ const ProductVitosoList = ({ contents }) => {
             >
               <img
                 src={noPhoto}
-                alt={TradeName}
+                alt={description}
                 className="h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover group-hover:scale-105 transition duration-300"
               />
               <div className="ml-0 sm:ml-16">
                 <Link to={`/drugs/${_id}`}>
                   <h3 className="capitalize font-medium text-lg">
-                    {TradeName}
+                    {description}
                   </h3>
                 </Link>
                 <h4 className="capitalize text-md text-neutral-content">
-                  {ScientificName}
+                  {scientificName}
                 </h4>
               </div>
               <p className="font-medium ml-0 sm:ml-auto text-lg">
-                {PublicPrice}
+                {publicPrice}
               </p>
               <div className="mt-10">
                 <button

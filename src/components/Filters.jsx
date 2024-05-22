@@ -2,6 +2,7 @@ import React from "react";
 
 // import FormCheckbox from "./form/FormCheckbox";
 import FormDtalistInput from "./form/FormDtalistInput";
+import FormInput from "./form/FormInput";
 
 const Filters = ({
   // contents,
@@ -18,6 +19,7 @@ const Filters = ({
   // marketingCompanyFilter,
   // functions
   filterHandelr,
+  onChange,
 }) => {
   return (
     <div className="bg-base-200 rounded-md px-8 py-4 grid gap-x-4  gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
@@ -50,9 +52,11 @@ const Filters = ({
         size="checkbox-sm"
         onChange={() => setWasfatyFilter(!wasfatyFilter)}
       />*/}
+
       <button onClick={filterHandelr} className="btn btn-accent btn-sm">
         search
       </button>
+      <FormInput onChange={onChange} type="text" />
     </div>
   );
 };

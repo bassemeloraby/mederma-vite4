@@ -1,21 +1,21 @@
 import React from "react";
 
-import FormCheckbox from "./form/FormCheckbox";
+// import FormCheckbox from "./form/FormCheckbox";
 import FormDtalistInput from "./form/FormDtalistInput";
 
 const Filters = ({
-  contents,
+  // contents,
   // scientificName
   scientificName,
   setScientificNameFilter,
   scientificNameFilter,
   // wasfaty
-  setWasfatyFilter,
-  wasfatyFilter,
+  // setWasfatyFilter,
+  // wasfatyFilter,
   // MarketingCompany
-  marketingCompany,
-  setMarketingCompanyFilter,
-  marketingCompanyFilter,
+  // marketingCompany,
+  // setMarketingCompanyFilter,
+  // marketingCompanyFilter,
   // functions
   filterHandelr,
 }) => {

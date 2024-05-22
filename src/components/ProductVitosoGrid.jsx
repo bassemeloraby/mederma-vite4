@@ -64,7 +64,7 @@ const ProductVitosoGrid = ({ contents }) => {
         totalCount={10500}
         components={gridComponents}
         itemContent={(index, drug) => {
-          const { TradeName, PublicPrice, ScientificName } = drug;
+          const { description, publicPrice, scientificName } = drug;
           return (
             <ItemWrapper>
             <Link
@@ -75,16 +75,16 @@ const ProductVitosoGrid = ({ contents }) => {
             <figure className="px-4 pt-4">
               <img
                 src={noPhoto}
-                alt={TradeName}
+                alt={description}
                 className="rounded-xl h-64 md:h-48 w-full object-cover"
               />
             </figure>
             <div className="card-body items-center text-center">
               <h2 className="card-title capitalize tracking-wider">
-                {TradeName}
+                {description}
               </h2>
-              <span className="text-secondary">{PublicPrice}</span>
-              <span className="text-primary">{ScientificName}</span>
+              <span className="text-secondary">{publicPrice}</span>
+              <span className="text-primary">{scientificName}</span>
             </div>
           </Link>
             </ItemWrapper>

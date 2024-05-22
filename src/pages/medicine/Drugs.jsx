@@ -17,29 +17,29 @@ const Drugs = () => {
 
   const [items, setItems] = useState(products);
   const [scientificNameFilter, setScientificNameFilter] = useState("");
-  const [marketingCompanyFilter, setMarketingCompanyFilter] = useState("");
-  const [wasfatyFilter, setWasfatyFilter] = useState(false);
+  // const [marketingCompanyFilter, setMarketingCompanyFilter] = useState("");
+  // const [wasfatyFilter, setWasfatyFilter] = useState(false);
 
   const scientificName = [...new Set(products.map((drug) => drug.scientificName))];
-  const marketingCompany = [...new Set(products.map((drug) => drug.marketingCompany))];
+  // const marketingCompany = [...new Set(products.map((drug) => drug.marketingCompany))];
 
   const filterHandelr = () => {
     let mainDrugs = products;
 
-    if (wasfatyFilter === true) {
-      mainDrugs = mainDrugs.filter((drug) => drug.wasfaty === true);
-    }
+    // if (wasfatyFilter === true) {
+    //   mainDrugs = mainDrugs.filter((drug) => drug.wasfaty === true);
+    // }
 
     if (scientificNameFilter) {
       mainDrugs = mainDrugs.filter(
         (drug) => drug.scientificName === scientificNameFilter
       );
     }
-    if (marketingCompanyFilter) {
-      mainDrugs = mainDrugs.filter(
-        (drug) => drug.marketingCompany === marketingCompanyFilter
-      );
-    }
+    // if (marketingCompanyFilter) {
+    //   mainDrugs = mainDrugs.filter(
+    //     (drug) => drug.marketingCompany === marketingCompanyFilter
+    //   );
+    // }
     setItems(mainDrugs);
   };
 
@@ -50,14 +50,14 @@ const Drugs = () => {
         scientificName={scientificName}
         setScientificNameFilter={setScientificNameFilter}
         scientificNameFilter={scientificNameFilter}
-        setWasfatyFilter={setWasfatyFilter}
-        wasfatyFilter={wasfatyFilter}
+        // setWasfatyFilter={setWasfatyFilter}
+        // wasfatyFilter={wasfatyFilter}
         filterHandelr={filterHandelr}
         setItems={setItems}
         // MarketingCompany
-        marketingCompany={marketingCompany}
-        setMarketingCompanyFilter={setMarketingCompanyFilter}
-        marketingCompanyFilter={marketingCompanyFilter}
+        // marketingCompany={marketingCompany}
+        // setMarketingCompanyFilter={setMarketingCompanyFilter}
+        // marketingCompanyFilter={marketingCompanyFilter}
       />
       <ProductsContainer contents={items} />
     </Fragment>

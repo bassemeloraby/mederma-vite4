@@ -22,8 +22,8 @@ const Filters = ({
   return (
     <div className="bg-base-200 rounded-md px-8 py-4 grid gap-x-4  gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
       {/* company  */}
-      <FormDtalistInput
-        name="MarketingCompany"
+      {/*<FormDtalistInput
+        name="marketingCompany"
         label="select Marketing Company"
         type="text"
         size="input-sm"
@@ -31,10 +31,10 @@ const Filters = ({
         defaultValue={marketingCompanyFilter}
         onInput={(e) => setMarketingCompanyFilter(e.target.value)}
         list="MarketingCompany"
-      />
+      />*/}
       {/* ScientificName  */}
       <FormDtalistInput
-        name="ScientificName"
+        name="scientificName"
         label="select Scientific Name"
         type="text"
         size="input-sm"
@@ -44,12 +44,12 @@ const Filters = ({
         list="ScientificName"
       />
       {/* wasfaty */}
-      <FormCheckbox
+      {/*  <FormCheckbox
         name="wasfaty"
         label="wasfaty"
         size="checkbox-sm"
         onChange={() => setWasfatyFilter(!wasfatyFilter)}
-      />
+      />*/}
       <button onClick={filterHandelr} className="btn btn-accent btn-sm">
         search
       </button>

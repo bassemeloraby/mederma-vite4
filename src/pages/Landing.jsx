@@ -5,9 +5,9 @@ const url = "/allProducts";
 
 export const loader = async () => {
   const response = await customFetch(`${url}?wasfaty=true`);
-  const wasfaty = response.data;
-  console.log(wasfaty)
-  return { wasfaty };
+  const products = response.data;
+  console.log(products)
+  return { products };
 };
 
 const Landing = () => {

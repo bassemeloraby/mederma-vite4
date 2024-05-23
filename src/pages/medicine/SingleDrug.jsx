@@ -6,31 +6,33 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../features/cart/cartSlice";
 
 export const loader = async ({ params }) => {
-  const response = await customFetch(`/allDrugs/${params.id}`);
+  const response = await customFetch(`/allProducts/${params.id}`);
   console.log(response.data);
-  return { drug: response.data };
+  const product = response.data;
+  return product;
 };
 const SingleDrug = () => {
-
-  const drug = useLoaderData();
-  const cartItems = useSelector((state) => state.cartState.cartItems);
+  const product = useLoaderData();
+  console.log(product);
+  const { _id, description, publicPrice, scientificName, marketingCompany } =
+    product;
+  // const cartItems = useSelector((state) => state.cartState.cartItems);
 
   // console.log(cartItems[0].productID);
-  console.log(cartItems.length);
-  const { _id, TradeName, PublicPrice, ScientificName, MarketingCompany } =
-    drug.drug[0];
-  const dispatch = useDispatch();
+  // console.log(cartItems.length);
+  // const { _id, TradeName, publicPrice, scientificName, marketingCompany } =
+  // products;
+  // const dispatch = useDispatch();
 
-  const cartProduct = {
-    // cartID: _id + Math.random(),
-    productID: _id ,
-    TradeName,
-    ScientificName,
-    MarketingCompany,
-  };
+  // const cartProduct = {
+  //   // cartID: _id + Math.random(),
+  //   productID: _id ,
+  //   TradeName,
+  //   scientificName,
+  //   marketingCompany,
+  // };
 
   const addToCart = () => {
-
     dispatch(addItem({ drug: cartProduct }));
   };
 
@@ -51,20 +53,20 @@ const SingleDrug = () => {
         {/* IMAGE */}
         <img
           src={noPhoto}
-          alt={TradeName}
+          alt={description}
           className="w-96 h-96 object-cover rounded-lg lg:w-full  "
         />
         {/* DRUG INFO */}
         <div>
-          <h1 className="capitalize text-3xl font-bold">{TradeName}</h1>
+          <h1 className="capitalize text-3xl font-bold">{description}</h1>
           <h4 className="text-xl text-neutral-content font-bold mt-2">
-            {ScientificName}
+            {scientificName}
           </h4>
           <h4 className="text-xl text-neutral-content font-bold mt-2">
-            {PublicPrice}
+            {publicPrice} {publicPrice && "SR"}
           </h4>
           <h4 className="text-xl text-neutral-content font-bold mt-2">
-            {MarketingCompany}
+            {marketingCompany}
           </h4>
         </div>
         {/* CART BTN */}

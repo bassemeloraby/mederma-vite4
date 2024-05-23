@@ -23,7 +23,7 @@ const cartSlice = createSlice({
         toast.warning("Item is already added to cart");
       } else {
         state.cartItems.push(drug);
-
+        state.numItemsInCart += 1;
         toast.success("Item added to cart");
       }
     },
@@ -40,6 +40,7 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter(
         (i) => i.productID !== productID
       );
+      state.numItemsInCart -= 1;
       toast.success("Item removed from cart");
     },
   },

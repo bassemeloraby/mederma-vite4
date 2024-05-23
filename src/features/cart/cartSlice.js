@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 
 const defaultState = {
   cartItems: [],
+  numItemsInCart: 0,
 };
 const getCartFromLocalStorage = () => {
   return JSON.parse(localStorage.getItem("cart")) || defaultState;
@@ -11,6 +12,7 @@ const getCartFromLocalStorage = () => {
 const cartSlice = createSlice({
   name: "cart",
   initialState: getCartFromLocalStorage(),
+  // initialState: defaultState,
   reducers: {
     addItem: (state, action) => {
       const { drug } = action.payload;

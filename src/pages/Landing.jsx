@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
 import { FeaturedProducts, Hero } from "../components";
 import { customFetch } from "../utils";
-const url = "/allDrugs";
+const url = "/allProducts";
 
 export const loader = async () => {
-  const response = await customFetch(url);
-  const drugs = response.data;
-  const wasfaty = drugs.filter(drug=> drug.wasfaty === true)
+  const response = await customFetch(`${url}?wasfaty=true`);
+  const wasfaty = response.data;
+  console.log(wasfaty)
   return { wasfaty };
 };
 

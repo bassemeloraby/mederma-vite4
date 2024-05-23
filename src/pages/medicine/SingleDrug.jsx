@@ -30,6 +30,7 @@ const SingleDrug = () => {
     description,
     scientificName,
     marketingCompany,
+    publicPrice
   };
 
   const addToCart = () => {

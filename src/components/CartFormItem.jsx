@@ -3,14 +3,14 @@ import { useDispatch } from "react-redux";
 import noPhoto from "../assets/noPhoto.jpg";
 
 const CartFormItem = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const removeItemFromTheCart = () => {
-      dispatch(removeItem({ cartID }));
-    };
+  const removeItemFromTheCart = () => {
+    dispatch(removeItem({ cartID }));
+  };
 
-    const { cartID, TradeName, PublicPrice, ScientificName, MarketingCompany } = cartItem;
-
+  const { cartID, description, publicPrice, scientificName, marketingCompany } =
+    cartItem;
 
   return (
     <article
@@ -20,21 +20,20 @@ const CartFormItem = () => {
       {/* IMAGE */}
       <img
         src={noPhoto}
-        alt={TradeName}
+        alt={description}
         className="h-24 w-24 rounded-lg sm:h-32 sm:w-32 object-cover"
       />
       {/* INFO */}
       <div className="sm:ml-16 sm:w-48">
         {/* TITLE */}
-        <h3 className="capitalize font-medium">{TradeName}</h3>
+        <h3 className="capitalize font-medium">{description}</h3>
         {/* COMPANY */}
         <h4 className="mt-2 capitalize text-sm text-neutral-content">
-          {MarketingCompany}
+          {marketingCompany}
         </h4>
         <h4 className="mt-2 capitalize text-sm text-neutral-content">
-          {ScientificName}
+          {scientificName}
         </h4>
-    
       </div>
       <div className="sm:ml-12">
         {/* AMOUNT */}
@@ -63,9 +62,9 @@ const CartFormItem = () => {
       </div>
 
       {/* PRICE */}
-      <p className="font-medium sm:ml-auto">{PublicPrice}</p>
+      <p className="font-medium sm:ml-auto">{publicPrice}</p>
     </article>
-  )
-}
+  );
+};
 
-export default CartFormItem
+export default CartFormItem;

@@ -19,6 +19,7 @@ const ProductVitosoList = ({ contents }) => {
       description: drugToAdd[0].description,
       scientificName: drugToAdd[0].scientificName,
       marketingCompany: drugToAdd[0].marketingCompany,
+      publicPrice: drugToAdd[0].publicPrice,
     };
     console.log(cartProduct);
     dispatch(addItem({ drug: cartProduct }));

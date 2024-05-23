@@ -22,15 +22,15 @@ const SingleDrug = () => {
   // console.log(cartItems.length);
   // const { _id, TradeName, publicPrice, scientificName, marketingCompany } =
   // products;
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const cartProduct = {
-  //   // cartID: _id + Math.random(),
-  //   productID: _id ,
-  //   TradeName,
-  //   scientificName,
-  //   marketingCompany,
-  // };
+  const cartProduct = {
+    // cartID: _id + Math.random(),
+    productID: _id ,
+    description,
+    scientificName,
+    marketingCompany,
+  };
 
   const addToCart = () => {
     dispatch(addItem({ drug: cartProduct }));

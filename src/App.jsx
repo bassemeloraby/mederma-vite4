@@ -13,6 +13,7 @@ import {
   SingleDrug,
   Checkout,
   Orders,
+  SingleList,
 } from "./pages";
 import { ErrorElement } from "./components";
 
@@ -56,6 +57,12 @@ const router = createBrowserRouter([
         path: "checkout",
         element: <Checkout />,
         loader: checkoutLoader,
+        // action: checkoutAction(store, queryClient),
+      },
+      {
+        path: "checkout/:id",
+        element: < SingleList/>,
+        // loader: checkoutLoader,
         // action: checkoutAction(store, queryClient),
       },
       {

@@ -5,6 +5,9 @@ export { default as About } from "./About";
 export { default as Login } from "./Login";
 export { default as Register } from "./Register";
 
+export { default as SingleList } from "./SingleList";
+
+
 //medicine
 export { default as Checkout } from "./medicine/Checkout";
 export { default as Orders } from "./medicine/Orders";

@@ -18,11 +18,11 @@ const ListsList = ({ items, listsCount, deleteSpecialAr }) => {
           </thead>
           <tbody>
             {items.map((li, i) => {
-              const { Description, updatedAt, createdAt } = li;
+              const { _id, Description, updatedAt, createdAt } = li;
               return (
                 <tr key={i}>
                   <td>
-                    <Link>{Description}</Link>
+                    <Link to={`${_id}`}>{Description}</Link>
                   </td>
                   <td>{createdAt}</td>
                   <td>{updatedAt}</td>

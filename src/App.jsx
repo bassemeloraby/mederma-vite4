@@ -22,6 +22,7 @@ import { loader as landingLoader } from "./pages/Landing";
 import { loader as singleDrugLoader } from "./pages/medicine/SingleDrug";
 import { loader as drugsLoader } from "./pages/medicine/Drugs";
 import { loader as checkoutLoader } from "./pages/medicine/Checkout";
+import { loader as SingleListLoader } from "./pages/SingleList";
 
 
 const router = createBrowserRouter([
@@ -62,7 +63,7 @@ const router = createBrowserRouter([
       {
         path: "checkout/:id",
         element: < SingleList/>,
-        // loader: checkoutLoader,
+        loader: SingleListLoader,
         // action: checkoutAction(store, queryClient),
       },
       {

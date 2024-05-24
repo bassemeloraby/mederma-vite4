@@ -27,6 +27,11 @@ const Checkout = () => {
   // useEffect(() => {
   //   setItems(lists)
   // }, [lists]);
+  const deleteSpecialAr =async(id)=>{
+    console.log(id)
+    const response = await customFetch.delete(`${url}/${id}`);
+
+  }
   return (
     <Fragment>
       <SectionTitle text="Checkout" />
@@ -38,6 +43,12 @@ const Checkout = () => {
         {items.map((li, i) => (
           <div key={i}>{li.Description}
           {li.content.map((c,i)=> <h6 key={i}>{c.TradeName}</h6>)}
+          <button
+          onClick={()=>deleteSpecialAr(li._id)}
+          className="btn btn-accent btn-sm me-2"
+        >
+          delete
+        </button>
           </div>
           
         ))}

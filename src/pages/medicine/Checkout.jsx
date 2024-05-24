@@ -1,7 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { customFetch } from "../../utils";
 import { Link, useLoaderData } from "react-router-dom";
-import { SectionTitle } from "../../components";
+import { ListsList, SectionTitle } from "../../components";
+import { toast } from "react-toastify";
 const url = "/specialArrays";
 
 export const loader = async () => {
@@ -33,44 +34,21 @@ const Checkout = () => {
     const response = await customFetch.delete(`${url}/${id}`);
     setItems(items.filter((list) => list._id !== id));
     console.log(items);
-    setlistsCount(listsCount -1)
+    setlistsCount(listsCount - 1);
+    toast.success("Successfully deleted")
   };
   return (
     <Fragment>
       <SectionTitle text="Checkout" />
-      <div className="mt-8">
-        <h4 className="mb-4 capitalize">total lists : {listsCount}</h4>
-        <div className="overflow-x-auto">
-          <table className="table table-zebra">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>options</th>
-              </tr>
-            </thead>
-            <tbody>
-              {items.map((li, i) => {
-                const { Description } = li;
-                return (
-                  <tr key={i}>
-                    <td>{Description}</td>
-                    <td>
-                      {" "}
-                      <button
-                        onClick={() => deleteSpecialAr(li._id)}
-                        className="btn btn-accent btn-sm me-2"
-                      >
-                        delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      {listsCount ? (
+        <ListsList
+          items={items}
+          listsCount={listsCount}
+          deleteSpecialAr={deleteSpecialAr}
+        />
+      ) : (
+        "no lists found"
+      )}
     </Fragment>
   );
 };

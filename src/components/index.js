@@ -15,3 +15,4 @@ export { default as FormInput } from "./form/FormInput";
 export { default as SubmitBtn } from "./form/SubmitBtn";
 //Checkout
 export { default as CheckoutFilter } from "./CheckoutFilter";
+export { default as ListsList } from "./ListsList";

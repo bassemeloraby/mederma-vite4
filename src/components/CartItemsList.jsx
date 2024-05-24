@@ -23,6 +23,7 @@ const CartItemsList = () => {
     try {
       const response = await customFetch.post(url, specialArraysData);
       const mainRes = response.data;
+      
       toast.success("list is saved successfully");
       console.log(mainRes);
       console.log(response);

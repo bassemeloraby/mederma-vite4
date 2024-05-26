@@ -47,7 +47,7 @@ const ItemWrapper = ({ children, ...props }) => (
       textAlign: "center",
       padding: "1rem 1rem",
       border: "1px solid gray",
-      width: "-webkit-fill-available"
+      width: "-webkit-fill-available",
       // whiteSpace: "nowrap",
     }}
   >
@@ -64,29 +64,39 @@ const ProductVitosoGrid = ({ contents }) => {
         totalCount={10500}
         components={gridComponents}
         itemContent={(index, drug) => {
-          const { description, publicPrice, scientificName } = drug;
+          const {
+            description,
+            publicPrice,
+            scientificName,
+            strength,
+            strengthUnit,
+            parts,
+          } = drug;
           return (
             <ItemWrapper>
-            <Link
-            key={drug._id}
-            to={`/drugs/${drug._id}`}
-            className="card w-full shadow-xl hover:shadow-2xl transition duration-300"
-          >
-            <figure className="px-4 pt-4">
-              <img
-                src={noPhoto}
-                alt={description}
-                className="rounded-xl h-64 md:h-48 w-full object-cover"
-              />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title capitalize tracking-wider">
-                {description}
-              </h2>
-              <span className="text-secondary">{publicPrice}</span>
-              <span className="text-primary">{scientificName}</span>
-            </div>
-          </Link>
+              <Link
+                key={drug._id}
+                to={`/drugs/${drug._id}`}
+                className="card w-full shadow-xl hover:shadow-2xl transition duration-300"
+              >
+                <figure className="px-4 pt-4">
+                  <img
+                    src={noPhoto}
+                    alt={description}
+                    className="rounded-xl h-64 md:h-48 w-full object-cover"
+                  />
+                </figure>
+                <div className="card-body items-center text-center">
+                  <h2 className="card-title capitalize tracking-wider">
+                    {description}
+                    {parts}
+                    {strength}
+                    {strengthUnit}
+                  </h2>
+                  <span className="text-secondary">{publicPrice}</span>
+                  <span className="text-primary">{scientificName}</span>
+                </div>
+              </Link>
             </ItemWrapper>
           );
         }}

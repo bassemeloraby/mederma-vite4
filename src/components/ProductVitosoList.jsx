@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../features/cart/cartSlice";
 
 const ProductVitosoList = ({ contents }) => {
-  
   const dispatch = useDispatch();
 
   const addHnadler = (_id) => {
@@ -25,8 +24,6 @@ const ProductVitosoList = ({ contents }) => {
     dispatch(addItem({ drug: cartProduct }));
   };
 
-  
-
   return (
     <div>
       <Virtuoso
@@ -34,7 +31,15 @@ const ProductVitosoList = ({ contents }) => {
         data={contents}
         totalCount={10500}
         itemContent={(index, drug) => {
-          const { _id, description, publicPrice, scientificName } = drug;
+          const {
+            _id,
+            description,
+            publicPrice,
+            scientificName,
+            strength,
+            strengthUnit,
+            parts,
+          } = drug;
           return (
             <div
               key={_id}
@@ -48,7 +53,9 @@ const ProductVitosoList = ({ contents }) => {
               <div className="ml-0 sm:ml-16">
                 <Link to={`/drugs/${_id}`}>
                   <h3 className="capitalize font-medium text-lg">
-                    {description}
+                    {description} {parts}
+                    {strength}
+                    {strengthUnit}
                   </h3>
                 </Link>
                 <h4 className="capitalize text-md text-neutral-content">

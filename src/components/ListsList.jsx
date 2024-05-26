@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { editList } from "../features/cart/cartSlice";
+import { useDispatch } from "react-redux";
 
 const ListsList = ({ items, listsCount, deleteSpecialAr }) => {
+  const dispatch = useDispatch();
   return (
     <div className="mt-8">
       <h4 className="mb-4 capitalize">total lists : {listsCount}</h4>
@@ -33,6 +36,12 @@ const ListsList = ({ items, listsCount, deleteSpecialAr }) => {
                       className="btn btn-accent btn-sm me-2"
                     >
                       delete
+                    </button>
+                    <button
+                      onClick={() => dispatch(editList(li))}
+                      className="btn btn-accent btn-sm me-2"
+                    >
+                      edit
                     </button>
                   </td>
                 </tr>

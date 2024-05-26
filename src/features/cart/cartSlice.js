@@ -4,6 +4,8 @@ import { toast } from "react-toastify";
 const defaultState = {
   cartItems: [],
   numItemsInCart: 0,
+  oldListName: "",
+  list_id: "",
 };
 const getCartFromLocalStorage = () => {
   return JSON.parse(localStorage.getItem("cart")) || defaultState;
@@ -43,9 +45,22 @@ const cartSlice = createSlice({
       state.numItemsInCart -= 1;
       toast.success("Item removed from cart");
     },
+    editList: (state, action) => {
+      // const oldList = action.payload;
+      // state.cartItems = oldList
+      state.cartItems = action.payload.content;
+      state.numItemsInCart = state.cartItems.length;
+      state.oldListName = action.payload.Description;
+      state.list_id = action.payload._id;
+
+      console.log(state.cartItems);
+      console.log(state.cartItems.length);
+      console.log(state.oldListName);
+      console.log(state.list_id);
+    },
   },
 });
 
-export const { addItem, clearCart, removeItem } = cartSlice.actions;
+export const { addItem, clearCart, removeItem, editList } = cartSlice.actions;
 
 export default cartSlice.reducer;
